@@ -16,6 +16,19 @@ namespace AutoUpdate
         public Form1()
         {
             InitializeComponent();
+            //version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            
+
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                Version myVersion;
+                myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                version.Text = string.Concat("ClickOnce published Version: v", myVersion);
+            }
+            else
+            {
+                version.Text = "No version in debug mode";
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -63,6 +76,11 @@ namespace AutoUpdate
                     MessageBox.Show("You are running the latest version.", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
