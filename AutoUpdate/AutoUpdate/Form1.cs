@@ -23,7 +23,7 @@ namespace AutoUpdate
             {
                 Version myVersion;
                 myVersion = ApplicationDeployment.CurrentDeployment.CurrentVersion;
-                version.Text = string.Concat("ClickOnce published Version: v", myVersion);
+                version.Text = string.Concat("Version:", myVersion);
             }
             else
             {
